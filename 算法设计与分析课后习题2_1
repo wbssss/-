@@ -1,0 +1,31 @@
+import java.util.Scanner; 
+public class zy2_1 { 
+    public static void main(String args[]){ 
+        Scanner scanner=new Scanner(System.in);   //调用从键盘输入函数。
+        int numbers[];   //定义数组类型。
+        int m;   //m是输入的元素个数。
+        System.out.print("输入个数为 "); 
+        m=scanner.nextInt();   //从键盘输入m的值。
+        numbers=new int[m];   //数组初始化，由m的值来确定数组大小，即一共输入了多少个元素。
+        int sum[]=new int[m];   //数组初始化，同上。
+        for(int i=0;i<m;i++) 
+            sum[i]=0;   //数组sum[]用于统计重数，故sum[i]赋值为0。
+        for(int i=0;i<m;i++) 
+            numbers[i]=scanner.nextInt();   //从依次键盘输入m个元素。
+        for(int i=0;i<m;i++) 
+            for(int j=0;j<m;j++){   
+                if(numbers[i]==numbers[j]){   //依次比较各个元素的大小(如第一次从numbers[0]的数值开始，依次m个元素进行比较，第二次从numbers[1]开始，依次与m个元素比较，以此类推，最终得到众数)。
+                    sum[i]++;   //当遇到相同的数时开始统计重数。
+                } 
+            } 
+        int count=0; 
+        int number=0; 
+        for(int i=0;i<m;i++) 
+            if(sum[i]>count){   //当sum[i]大于count(即大于0)时，意味着存在由众数。
+                count=sum[i];   //将统计所得的重数的值赋给count。
+                number=numbers[i];   //将众数的值赋给number。
+            } 
+        System.out.println("众数是"+number);   //输出众数结果。
+        System.out.println("重数是"+count);   //输出重数的值。
+    } 
+} 
